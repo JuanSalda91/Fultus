@@ -31,3 +31,7 @@ Fultus is a SaaS Customer Support Platform where business can manage customer in
 - Ticket activity history.
 - File attachments.
 - Internal notes visible only to support agents.
+
+## Figma Prototype
+
+[\[text\](https://www.figma.com/proto/jNpXO9tmf8orDlr3nDMlpg/Fultus?node-id=5-77&t=wj18fGfAEtTWnAAd-1)](https://www.figma.com/design/jNpXO9tmf8orDlr3nDMlpg/Fultus?node-id=1-19&p=f&t=wj18fGfAEtTWnAAd-0)
