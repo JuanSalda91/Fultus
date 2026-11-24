@@ -1,0 +1,23 @@
+# docker-compose.yml: describes the services Fultus needs for local development
+services:
+  db:
+    image: postgres:16            # pinned major version so upgrades never surprise you
+    container_name: fultus-db
+    restart: unless-stopped       # auto-start again after a reboot or crash
+    environment:                  # the official image reads these on FIRST startup
+      POSTGRES_USER: fultus
+      POSTGRES_PASSWORD: fultus_dev   # local development only, never reuse in production
+      POSTGRES_DB: fultus
+    ports:
+      - "5433:5432"               # host_port:container_port (5433 avoids clashing with a local Postgres on 5432)
+    volumes:
+      - fultus_pgdata:/var/lib/postgresql/data   # keeps your data when the container is removed
+    healthcheck:                  # reports "healthy" only when Postgres accepts connections
+      test: ["CMD-SHELL", "pg_isready -U fultus -d fultus"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+# Named volumes are managed by Docker
+volumes:
+  fultus_pgdata:
